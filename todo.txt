@@ -1,0 +1,7 @@
+DONE Numero
+DONE String
+DONE Boolean
+DONE null
+DONE Array
+DONE Object
+DONE Label

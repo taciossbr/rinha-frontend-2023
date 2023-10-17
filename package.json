@@ -1,0 +1,30 @@
+{
+  "name": "rinha-front-taciossbr",
+  "version": "1.0.0",
+  "description": "Este é o repositório da Rinha de Frontend. Esta é uma brincadeira e um desafio de código inspirada pela _\"Rinha de Backend\"_, uma iniciativa criada por Francisco Franceschi.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taciossbr/rinha-frontend-2023.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taciossbr/rinha-frontend-2023/issues"
+  },
+  "homepage": "https://github.com/taciossbr/rinha-frontend-2023#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.10.0",
+    "@types/react": "^18.2.28",
+    "@types/react-dom": "^18.2.13",
+    "parcel": "^2.10.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
