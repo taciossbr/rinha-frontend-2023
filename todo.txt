@@ -5,3 +5,8 @@ DONE null
 DONE Array
 DONE Object
 DONE Label
+
+TODO paginate Array
+TODO paginate Object
+TODO paginate everything!
+TODO load json in chunks: its possible? its viable? its easy

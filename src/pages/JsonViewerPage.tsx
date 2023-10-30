@@ -1,20 +1,21 @@
 import React from "react";
 import { Text } from "../ui/Typography";
 
-export function JsonViewerPage({value, filename}) {
+export function JsonViewerPage({ value, filename }) {
   return (
     <div className="json-viewer">
       <div className="page-container">
         <h1 className="subtitle">{filename}</h1>
         <div className="json-container">
-          <JsonViewer className="root" value={value} />
+          <JsonViewer label="root" className="root" value={value} />
         </div>
       </div>
     </div>
   );
 }
 
-function JsonViewer({ value, className = "" }) {
+function JsonViewer({ value, label, className = "" }) {
+  // debugger
   const type = typeof value;
   switch (type) {
     case "number":
@@ -25,8 +26,9 @@ function JsonViewer({ value, className = "" }) {
       return <BoolComponent value={value} />;
     default:
       if (value == null) return <NullComponent />;
-      if (Array.isArray(value)) return <ListComponent value={value} />;
-      return <ObjectComponent className={className} value={value} />;
+      if (Array.isArray(value))
+        return <ListComponent label={label} value={value} />;
+      return <ObjectComponent label={label} className={className} value={value} />;
   }
 }
 
@@ -46,15 +48,16 @@ function NullComponent() {
   return <Text className="null">null</Text>;
 }
 
-function ListComponent({ value }) {
+function ListComponent({ value, label }) {
   return (
     <>
       <Text className="brackets">[</Text>
       <div className="list-content">
         {value.map((element, index) => (
-          <div className="item">
+          // TODO eu sei que ta errado
+          <div className="item" key={`${label}_${index}`}>
             <Label>{index}: </Label>
-            <JsonViewer value={element} />
+            <JsonViewer label={`${label}_${index}`} value={element} />
           </div>
         ))}
       </div>
@@ -63,15 +66,15 @@ function ListComponent({ value }) {
   );
 }
 
-function ObjectComponent({ value, className }) {
+function ObjectComponent({ value, label, className }) {
   const keys = Object.keys(value);
   return (
     <>
       <div className={"object-content " + className}>
-        {keys.map((key) => (
-          <div className="item">
-            <Label>{key}: </Label>
-            <JsonViewer value={value[key]} />
+        {keys.map((jsonKey) => (
+          <div className="item" key={`${label}_${jsonKey}`}>
+            <Label>{jsonKey}: </Label>
+            <JsonViewer label={`${label}_${jsonKey}`} value={value[jsonKey]} />
           </div>
         ))}
       </div>
